@@ -6,7 +6,6 @@ import java.util.List;
 import org.wregen.spells.entity.Spell;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +24,12 @@ public class SpellAdapter extends ArrayAdapter<Spell> {
     public int getCount() {
         return mSpells.size();
     }
+
+    @Override
+    public Spell getItem(int position) {
+        return mSpells.get(position);
+    }
+    
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
