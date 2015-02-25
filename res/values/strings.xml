@@ -2,10 +2,16 @@
 <resources>
 
     <string name="app_name">Zaklęcia Harrego</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    
+    <string name="title_section1">Alfabetyczna lista zaklęć</string>
+    <string name="title_section2">Lista zaklęć wg książek</string>
+    <string name="title_section3">Kategorie zaklęć</string>
+    
+    <string name="navigation_drawer_open">Otwórz menu główne</string>
+    <string name="navigation_drawer_close">Zamknij menu główne</string>
+    
+    <string name="action_example">Example action</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    
 </resources>
