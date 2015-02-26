@@ -4,11 +4,13 @@ package org.wregen.spells;
 import org.wregen.spells.entity.Spell;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -44,13 +46,20 @@ public class SingleSpellFragment extends Fragment {
         mDb = new Database(getActivity());
         int spellId = getArguments().getInt(SPELL_ID);
         Spell item = mDb.getSpell(spellId);
+        Drawable image = mDb.getImage(spellId);
 
         View rootView = inflater.inflate(R.layout.fragment_singlespell, container, false);
+
         TextView title = (TextView)rootView.findViewById(R.id.title);
         title.setText(item.spell);
+
         TextView description = (TextView)rootView.findViewById(R.id.description);
         description.setText(item.description);
-        
+
+        if (image != null) {
+            ImageView picture = (ImageView)rootView.findViewById(R.id.image);
+            picture.setImageDrawable(image);
+        }
         return rootView;
     }
 
