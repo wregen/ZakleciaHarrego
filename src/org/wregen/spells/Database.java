@@ -19,8 +19,9 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 public class Database extends SQLiteAssetHelper {
 
     private static final String DATABASE_NAME = "spells.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
     private static final String[] SPELL_FIELDS = new String[] {
+            "id",
             "spell",
             "description",
             "book",
@@ -42,11 +43,11 @@ public class Database extends SQLiteAssetHelper {
      */
     public List<Spell> getAllSpells() {
         SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.query("spells", SPELL_FIELDS, null, null, null, null, null, null);
+        Cursor cursor = db.query("spells", SPELL_FIELDS, null, null, null, null, "spell ASC", null);
         List<Spell> items = new ArrayList<Spell>();
         if (cursor != null) {
             for (cursor.moveToFirst(); cursor.isAfterLast() == false; cursor.moveToNext()) {
-                items.add(new Spell(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3)));
+                items.add(cursorToSpell(cursor));
             }
             cursor.close();
         }
@@ -64,7 +65,7 @@ public class Database extends SQLiteAssetHelper {
 
         if (cursor != null) {
             cursor.moveToFirst();
-            out = new Spell(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3));
+            out = cursorToSpell(cursor);
             cursor.close();
         }
         db.close();
@@ -84,5 +85,14 @@ public class Database extends SQLiteAssetHelper {
         }
         db.close();
         return out;
+    }
+
+    private Spell cursorToSpell(Cursor cursor) {
+        return new Spell(
+                cursor.getInt(cursor.getColumnIndex("id")),
+                cursor.getString(cursor.getColumnIndex("spell")),
+                cursor.getString(cursor.getColumnIndex("description")),
+                cursor.getString(cursor.getColumnIndex("book")),
+                cursor.getInt(cursor.getColumnIndex("page")));
     }
 }

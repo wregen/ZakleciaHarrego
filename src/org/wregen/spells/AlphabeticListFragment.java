@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,15 +60,14 @@ public class AlphabeticListFragment extends Fragment {
             public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
                 // Get the cursor, positioned to the corresponding row in the result set
                 Spell item = (Spell)listView.getItemAtPosition(position);
-
                 
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.container, SingleSpellFragment.newInstance(position + 1));
+                transaction.replace(R.id.container, SingleSpellFragment.newInstance(item.id));
                 transaction.addToBackStack(null);
                 transaction.commit();
 
-                Toast.makeText(getActivity().getApplicationContext(),
+                Toast.makeText(getActivity(),
                         item.spell, Toast.LENGTH_SHORT).show();
 
             }
