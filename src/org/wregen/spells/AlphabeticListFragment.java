@@ -50,7 +50,7 @@ public class AlphabeticListFragment extends Fragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_alphabeticallist, container, false);
         mDb = new Database(getActivity());
-        ArrayList<Spell> data = (ArrayList<Spell>)mDb.getAllSpells();
+        final ArrayList<Spell> data = (ArrayList<Spell>)mDb.getAllSpells();
         mAdapter = new SpellAdapter(getActivity(), data);
         mListview = (ListView)rootView.findViewById(R.id.spellList);
         mListview.setAdapter(mAdapter);
@@ -66,7 +66,7 @@ public class AlphabeticListFragment extends Fragment {
 
                 transaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
 
-                transaction.replace(R.id.container, SingleSpellFragment.newInstance(item.id));
+                transaction.replace(R.id.container, ViewPagerFragment.newInstance(position, data));
 
                 transaction.addToBackStack(null);
                 transaction.commit();
