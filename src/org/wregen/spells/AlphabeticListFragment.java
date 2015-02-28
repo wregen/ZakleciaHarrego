@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,10 +69,6 @@ public class AlphabeticListFragment extends Fragment {
 
                 transaction.addToBackStack(null);
                 transaction.commit();
-
-                Toast.makeText(getActivity(),
-                        item.spell, Toast.LENGTH_SHORT).show();
-
             }
 
         });
@@ -88,4 +83,5 @@ public class AlphabeticListFragment extends Fragment {
 //                getArguments().getInt(ARG_SECTION_NUMBER));
 
     }
+
 }

@@ -12,12 +12,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -25,14 +23,13 @@ import android.widget.TextView;
  * SingleSpellFragment
  */
 public class ViewPagerFragment extends Fragment {
-    private static final String SPELL_ID = "spell_id";
     private Database mDb;
 
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     
-    private ArrayList<Spell> mData;
     private int mCurrentPosition;
+    private ArrayList<Spell> mData;
 
     /**
      * Returns a new instance of this fragment for the given spell id.
@@ -56,7 +53,7 @@ public class ViewPagerFragment extends Fragment {
     @Override
     public ViewPager onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        ViewPager mPager = (ViewPager)inflater.inflate(R.layout.fragment_viewpager, container, false);
+        mPager = (ViewPager)inflater.inflate(R.layout.fragment_viewpager, container, false);
         mPagerAdapter = new SlidePagerAdapter(getActivity());
 
         mPager.setAdapter(mPagerAdapter);

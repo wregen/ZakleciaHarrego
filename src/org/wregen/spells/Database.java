@@ -12,14 +12,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 public class Database extends SQLiteAssetHelper {
 
     private static final String DATABASE_NAME = "spells.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 7;
     private static final String[] SPELL_FIELDS = new String[] {
             "id",
             "spell",
@@ -72,6 +71,7 @@ public class Database extends SQLiteAssetHelper {
         return out;
     }
 
+    @SuppressWarnings("deprecation")
     public Drawable getImage(int id_spell) {
         Drawable out = null;
         SQLiteDatabase db = getReadableDatabase();
