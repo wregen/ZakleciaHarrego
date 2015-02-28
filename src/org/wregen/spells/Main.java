@@ -39,6 +39,10 @@ public class Main extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout)findViewById(R.id.drawer_layout));
     }
+    
+    public void selectNonDrawerFragment(int fakePosition) {
+        mNavigationDrawerFragment.selectItem(fakePosition);
+    }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
@@ -55,6 +59,11 @@ public class Main extends ActionBarActivity
                         .replace(R.id.container, ByBookListFragment.newInstance(position + 1))
                         .commit();
                 break;
+            case 2:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, CategoryListFragment.newInstance(position + 1))
+                        .commit();
+                break;                
             default:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, AlphabeticListFragment.newInstance(position + 1))

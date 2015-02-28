@@ -16,6 +16,7 @@
         <activity
             android:name=".Main"
             android:label="@string/app_name"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:parentActivityName="android.support.v7.app.ActionBarActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

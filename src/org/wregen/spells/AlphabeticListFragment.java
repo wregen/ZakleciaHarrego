@@ -60,10 +60,14 @@ public class AlphabeticListFragment extends Fragment {
             public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
                 // Get the cursor, positioned to the corresponding row in the result set
                 Spell item = (Spell)listView.getItemAtPosition(position);
-                
+
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+                transaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+
                 transaction.replace(R.id.container, SingleSpellFragment.newInstance(item.id));
+
                 transaction.addToBackStack(null);
                 transaction.commit();
 

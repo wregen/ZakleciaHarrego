@@ -76,7 +76,6 @@ public class Database extends SQLiteAssetHelper {
         Drawable out = null;
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.query("images", IMAGE_FIELDS, "id_spell=" + id_spell, null, null, null, null, null);
-        Log.d("XXX", "" + cursor.getCount());
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
             byte[] data = cursor.getBlob(2);
