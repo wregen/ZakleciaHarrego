@@ -1,8 +1,24 @@
-
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_grey_800"
-    android:choiceMode="singleChoice"
-    tools:context="org.wregen.spells.NavigationDrawerFragment" />
+    tools:context="org.wregen.spells.NavigationDrawerFragment" >
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:choiceMode="singleChoice" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/list"
+        android:layout_marginBottom="0dp"
+        android:scaleType="fitEnd"
+        android:src="@drawable/default_spell" />
+
+</RelativeLayout>

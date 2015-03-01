@@ -1,30 +1,33 @@
 
 package org.wregen.spells.entity;
 
+import java.util.ArrayList;
+
 public class Spell {
 
     public int id;
     public String spell;
     public String description;
-    public String book;
-    public int page;
+    public Category category;
+    public ArrayList<Occurence> occurences;
 
-    public Spell(int id, String spell, String description, String book, int page) {
+    public Spell(String spell, String description, Category category, ArrayList<Occurence> occurences) {
+        this.spell = spell;
+        this.description = description;
+        this.category = category;
+        this.occurences = occurences;
+    }
+
+    public Spell(int id, String spell, String description, Category category, ArrayList<Occurence> occurences) {
         this.id = id;
         this.spell = spell;
         this.description = description;
-        this.book = book;
-        this.page = page;
+        this.category = category;
+        this.occurences = occurences;
     }
 
-    public Spell(String spell, String description, String book, int page) {
-        this.spell = spell;
-        this.description = description;
-        this.book = book;
-        this.page = page;
-    }
-
-    public Spell(String spell, String description) {
+    public Spell(int id, String spell, String description) {
+        this.id = id;
         this.spell = spell;
         this.description = description;
     }

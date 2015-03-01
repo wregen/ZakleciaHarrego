@@ -49,7 +49,7 @@ public class AlphabeticListFragment extends Fragment {
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_alphabeticallist, container, false);
         mDb = new Database(getActivity());
-        final ArrayList<Spell> data = (ArrayList<Spell>)mDb.getAllSpells();
+        final ArrayList<Spell> data = mDb.getAllSpells();
         mAdapter = new SpellAdapter(getActivity(), data);
         mListview = (ListView)rootView.findViewById(R.id.spellList);
         mListview.setAdapter(mAdapter);
@@ -57,9 +57,6 @@ public class AlphabeticListFragment extends Fragment {
 
             @Override
             public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
-                // Get the cursor, positioned to the corresponding row in the result set
-                Spell item = (Spell)listView.getItemAtPosition(position);
-
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
 

@@ -27,7 +27,7 @@ public class ViewPagerFragment extends Fragment {
 
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
-    
+
     private int mCurrentPosition;
     private ArrayList<Spell> mData;
 
@@ -107,6 +107,12 @@ public class ViewPagerFragment extends Fragment {
                 picture.setImageDrawable(image);
             }
 
+            TextView category = (TextView)itemView.findViewById(R.id.category);
+            if (item.category != null) {
+                category.setText(getResources().getString(R.string.category) + " " + item.category.name);
+            } else {
+                category.setVisibility(View.GONE);
+            }
             container.addView(itemView);
 
             return itemView;
